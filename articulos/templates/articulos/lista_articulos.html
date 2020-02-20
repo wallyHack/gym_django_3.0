@@ -1,22 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Articulos</title>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>Articulos</tr> 
-        </thead>                
-        <tbody>
-            {% for articulo in articulos %}
-                <tr>                
-                    <td>{{articulo}}</td>  <td>{{articulo.id}} </td>             
+
+{% extends 'articulos/base.html' %}
+
+{% block content%}
+    <div class="container">
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'articulos:agregar' %}">
+                        <button type="button" class="btn btn-primary">Agregar Articulo</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th acope="col">Acción</th>   
+                    <th scope="col">Acción</th>                 
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+            </thead>                
+            <tbody>
+                {% for articulo in articulos %}
+                    <tr>   
+                        <th scope="row">{{ articulo.id }}</th>
+                        <td>{{ articulo.nombre }}</td>
+                        <td>{{ articulo.precio }}</td>
+                        <td>{{ articulo.cantidad }}</td> 
+                        <td>
+                            <a href="{% url 'articulos:eliminar' articulo.id %}">
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                            </a>                                                          
+                        </td>
+                        <td>
+                            <a href="{% url 'articulos:actualizar' articulo.id %}">
+                                <button type="button" class="btn btn-info">Actualizar</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock%}
