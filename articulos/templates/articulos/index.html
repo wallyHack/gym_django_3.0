@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Materias</title>
+</head>
+<body>
+    <p>Materias Enero-Agosto 2020 de {{nombre}} {{apellido_p}} con edad de: {{edad}} años...</p>
+    <table>
+        <thead>
+            <tr>Materias</tr>
+        </thead>                
+        <tbody>
+            {% for materia in materias %}
+                <tr>                
+                    <td>{{materia}}</td>                
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

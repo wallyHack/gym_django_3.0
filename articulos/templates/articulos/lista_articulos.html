@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Articulos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>Articulos</tr> 
+        </thead>                
+        <tbody>
+            {% for articulo in articulos %}
+                <tr>                
+                    <td>{{articulo}}</td>  <td>{{articulo.id}} </td>             
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
