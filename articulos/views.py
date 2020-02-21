@@ -4,6 +4,8 @@ from .forms import ArticuloForm
 
 # Create your views here.
 
+""" vistas basadas en funciones"""
+
 def agregar(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
