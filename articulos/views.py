@@ -11,8 +11,7 @@ def agregar(request):
         form = ArticuloForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('articulos:lista_articulos')
-            
+            return redirect('articulos:lista_articulos')            
     else:
         form = ArticuloForm()
     
