@@ -18,12 +18,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Usuario',
             fields=[
-                ('user_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('user_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE,
+                                                  parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
                 ('rfc', models.CharField(max_length=13, verbose_name='R.F.C')),
-                ('fecha_nacimiento', models.DateField(verbose_name='Fecha de nacimiento')),
+                ('fecha_nacimiento', models.DateField(
+                    verbose_name='Fecha de nacimiento')),
                 ('peso', models.DecimalField(decimal_places=2, max_digits=5)),
                 ('altura', models.DecimalField(decimal_places=2, max_digits=3)),
-                ('indice_masa', models.DecimalField(decimal_places=2, max_digits=3)),
+                ('indice_masa', models.DecimalField(
+                    decimal_places=2, max_digits=3)),
             ],
             options={
                 'verbose_name': 'user',
@@ -38,11 +41,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Pago',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tipo_pago', models.CharField(choices=[('1', 'Pago mensual'), ('2', 'Pago diario')], max_length=1, verbose_name='Tipo de pago')),
-                ('fecha', models.DateField(auto_now_add=True, verbose_name='Fecha de pago')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('tipo_pago', models.CharField(choices=[
+                 ('1', 'Pago mensual'), ('2', 'Pago diario')], max_length=1, verbose_name='Tipo de pago')),
+                ('fecha', models.DateField(
+                    auto_now_add=True, verbose_name='Fecha de pago')),
                 ('cantidad', models.DecimalField(decimal_places=2, max_digits=7)),
-                ('usuario', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='usuarios_uaz.Usuario', verbose_name='Usuario')),
+                ('usuario', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                              to='usuarios_uaz.Usuario', verbose_name='Usuario')),
             ],
         ),
     ]
