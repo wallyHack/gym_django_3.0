@@ -1,7 +1,6 @@
 
 from django.forms import ModelForm, TextInput, NumberInput
-from .models import Articulo
-
+from .models import Articulo, LONGITUD_MAXIMA
 
 class ArticuloForm(ModelForm):
     class Meta:
@@ -19,4 +18,9 @@ class ArticuloForm(ModelForm):
             'precio': NumberInput(attrs={
                 'class': 'form-control', 'placeholder': 'Precio'
                 }),
+        }
+
+        # mensajes personalizados para la validación backend
+        error_messages = {
+            'nombre': {'max_length': LONGITUD_MAXIMA}
         }

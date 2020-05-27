@@ -1,5 +1,6 @@
 asgiref==3.2.7
 autopep8==1.5.2
+coverage==5.1
 Django==3.0.5
 flake8==3.8.2
 importlib-metadata==1.6.0
@@ -9,5 +10,6 @@ pycodestyle==2.6.0
 pyflakes==2.2.0
 pytz==2019.3
 reportlab==3.5.42
+simplejson==3.17.0
 sqlparse==0.3.1
 zipp==3.1.0
