@@ -17,7 +17,7 @@ class TestModels(TestCase):
 
     def test_return_object_articulo(self):   
         self.articulo.save() 
-        self.assertEqual(self.articulo.nombre, str(self.articulo))
+        self.assertEqual(self.articulo.nombre, str(self.articulo))        
 
     def test_max_length_nombre(self):       
         self.articulo.nombre = "jkbskjbvskjbvsjksfjfkldjkljfkldsjfkladjkljakljfdk"
