@@ -2,34 +2,35 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from articulos.models import Articulo
+from django.urls import reverse
 
 class TestViews(TestCase):
 
     def setUp(self):
         return super().setUp()
     
-    def test_lista_articulos(self):
+    def test_url_lista_articulos(self):
         # # se logea el usuario en caso de ser requerido
         # User.objects.create_user(username="manuel", password="wally98")
         # # se lanza la ventana de login
         # self.client.login(username="manuel", password="wally98")
 
         response = self.client.get('/articulos/lista/')
-        self.assertEquals(response.status_code, 200)        
-
-    def test_template_correcto_lista_articulos(self):
-        # se logea el usuario
-        # User.objects.create_user(username="manuel", password="wally98")
-        # self.client.login(username="manuel", password="wally98")
-
+        self.assertEquals(response.status_code, 200)    
+       
+    def test_template_correcto_lista_articulos(self):        
         response = self.client.get('/articulos/lista/')
         self.assertTemplateUsed(response, 'articulos/lista_articulos.html')
 
+    def test_url_agregar_articulo(self):
+        response = self.client.get('/articulos/agregar/')   
+        self.assertEquals(response.status_code, 200) 
+      
     def test_template_correcto_agregar_articulos(self):
         response = self.client.get("/articulos/agregar/")
         self.assertTemplateUsed(response, 'articulos/agregar_articulos.html')
 
-    # falta incluir pruebas de redireccion
+    # me falta incluir pruebas de redireccion
 
     def test_agregar_articulo_form(self):
         # datos del form
@@ -69,7 +70,7 @@ class TestViews(TestCase):
         # self.assertRedirects(response, '/articulos/lista_articulos.html')    
 
     def test_eliminacion_articulo_no_existente(self):
-        response = self.client.get('/articulos/1000/eliminar/')
+        response = self.client.get('/articulos/10880/eliminar/')
         self.assertEquals(response.status_code, 404)    
     
     def test_actualizacion_correcta_de_un_articulo(self):
@@ -94,7 +95,9 @@ class TestViews(TestCase):
         }
         response = self.client.post('/articulos/'+str(id)+'/actualizar/', data)
         self.assertEquals(response.url, '/articulos/lista/')
-        
 
-    
-        
+    def test_actualizacion_de_articulo_no_existente(self):
+        response = self.client.get('/articulos/2390/actualizar/')
+        self.assertEquals(response.status_code, 404)
+
+
