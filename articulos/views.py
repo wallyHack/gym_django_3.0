@@ -6,6 +6,7 @@ from .forms import ArticuloForm
 
 """ vistas basadas en funciones"""
 
+
 def agregar(request):
     if request.method == 'POST':
         form = ArticuloForm(request.POST)
@@ -18,7 +19,7 @@ def agregar(request):
     return render(request, 'articulos/agregar_articulos.html', {'form': form})
 
 
-def eliminar(request, id_articulo):    
+def eliminar(request, id_articulo):
     articulo = get_object_or_404(Articulo, pk=id_articulo)
     articulo.delete()
     return redirect('articulos:lista_articulos')

@@ -3,17 +3,18 @@ from django.test import TestCase
 from articulos.models import Articulo, LONGITUD_MAXIMA
 from articulos.forms import ArticuloForm
 
+
 class TestForms(TestCase):
-    
+
     # se ejecuta antes de las pruebas
-    def setUp(self, nombre="pesas", cantidad=2, precio="899.9", descripcion="pesas rusas de 200kg"):       
+    def setUp(self, nombre="pesas", cantidad=2, precio="899.9", descripcion="pesas rusas de 200kg"):
         # datos del formulario
         self.data = {
             'nombre': nombre,
             'cantidad': cantidad,
             'precio': precio,
             'descripcion': descripcion
-        }           
+        }
 
     def test_si_el_formulario_es_invalido(self):
         self.data['nombre'] = "djkljakljfdkklkdsmklfmsklmfklsdmfklsdmfsdllklkjkljvkljkfljfkgkdljgdkljvklfdvflkdjvfdkljvkvkdljvkldfmvklmvklvklfdjvkfldvklvmlfkdvnfkdlvjfkdljfkdlmdmdskl"
@@ -24,8 +25,8 @@ class TestForms(TestCase):
         self.assertFalse(form.is_valid())
 
     def test_si_el_formulario_es_valido(self):
-        self.data['nombre'] = "banda elastica"  
-        self.data['cantidad'] = 80              
+        self.data['nombre'] = "banda elastica"
+        self.data['cantidad'] = 80
         form = ArticuloForm(
             self.data
         )
@@ -37,7 +38,7 @@ class TestForms(TestCase):
         self.data['nombre'] = "djkljakljfdkklkdsmklfmsklmfklsdmfklsdmfsdllklkjkljvkljkfljfkgkdljgdkljvklfdvflkdjvfdkljvkvkdljvkldfmvklmvklvklfdjvkfldvklvmlfkdvnfkdlvjfkdljfkdlmdmdskl"
         form = ArticuloForm(
             self.data
-        )        
+        )
 
         return self.assertEquals(form.errors['nombre'], [LONGITUD_MAXIMA])
 

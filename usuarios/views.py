@@ -4,6 +4,8 @@ from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
+
+
 def bienvenido(request):
     if not request.user.is_authenticated:
         return redirect('usuarios:login')
